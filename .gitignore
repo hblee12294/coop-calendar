@@ -1,0 +1,44 @@
+## Add entries to this file to have git not try to add them
+
+# Modules #
+node_modules/
+
+# APIkeys/passwords #
+
+# Editor molt #
+*.swp
+*.bak
+*.idea
+*.idea/
+
+# Compiled source #
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

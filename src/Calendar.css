@@ -1,0 +1,38 @@
+main {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 0%;
+	padding: 0 4px 4px 4px;
+	box-sizing: border-box;
+}
+
+/* Week Column
+------------ */
+
+.week-col {
+	display: flex;
+	flex: none;
+	padding-bottom: 8px;
+	color: #797979;
+}
+
+.week-cell {
+	display: flex;
+	flex: 1 1 0%;
+	justify-content: center;
+}
+
+/* grid
+---------- */
+
+.grid {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 0%;
+}
+
+.day-col {
+	display: flex;
+	flex: 1 1 0%;
+}
+

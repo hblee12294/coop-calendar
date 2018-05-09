@@ -1,0 +1,270 @@
+/* Style for Header
+------------------- */
+
+header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex: none;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+header .panel {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 70%;
+	padding: 5px 25px;
+	border-radius: 25px;
+	box-shadow: 0 0 5px #b1b1b1;
+}
+
+
+/* Date-control
+--------------- */
+
+.date-control {
+	display: flex;
+	align-items: center;
+	flex: 1 1 0%;
+}
+
+.display {
+	display: flex;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.paging {
+	display: flex;
+	align-items: center;
+}
+
+.paging .dropdown {
+	display: inline-block;
+	position: relative;
+	font-size: 0;
+}
+
+.paging .tip {
+	position: absolute;
+	padding: 3px 5px;
+	top: 110%;
+	left: 0;
+	border-radius: 3px;
+	color: #f1f1f1;
+	background-color: rgba(0, 0, 0, 0.6);
+	text-align: left;
+	overflow: hidden;
+	font-size: 12px;
+	user-select: none;
+	transition: .1s .3s;
+	transform: scale(0);
+	transform-origin: center;
+}
+
+.paging .dropdown:hover .tip {
+	transform: scale(1);
+}
+
+.paging svg {
+	cursor: pointer;
+	transition: .2s;
+}
+
+.paging svg:hover {
+	fill: #f1f1f1;
+}
+
+.today {
+	display: flex;
+	background-color: #1e824c;
+	padding: 2px 5px;
+	border: none;
+	border-radius: 5px;
+	outline: none;
+	cursor: pointer;
+	color: white;
+	font-family: 'Noto Sans', sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	transition: .2s;
+}
+
+.today:hover, .today:focus {
+	background-color: #4a9b6f;
+}
+
+/* Search
+----------- */
+
+.search {
+	display: flex;
+	flex: 1 1 0%;
+	justify-content: center;
+	align-items: center;
+}
+
+.search input {
+	padding: 1px 25px 1px 5px;
+	border: 2px solid #f1f1f1;
+	border-radius: 5px;
+	outline: none;
+	font-family: 'Noto Sans', sans-serif;
+	transition: .2s;
+}
+
+.search input:focus {
+	border-color: #b1b1b1;
+	box-shadow: 0 0 0 1px #b1b1b1;
+}
+
+.search-icon {
+	width: 20px;
+	margin-left: -24px;
+	cursor: pointer;
+}
+
+/* Tools
+----------- */
+
+.tools {
+	display: flex;
+	flex: 1 1 0%;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.tools .btn-add {
+	display: flex;
+	padding: 2px 5px;
+	margin: 0 8px;
+	border-radius: 5px;
+	color: white;
+	background-color: #b1b1b1;
+	font-size: 10px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .2s;
+}
+
+
+/* login
+----------- */
+
+.login {
+	display: flex;
+	text-align: right;
+	position: relative;
+}
+
+.login .dropdown {
+	display: inline-block;
+	position: relative;
+}
+
+.login .username {
+	position: relative;
+	color: #202020;
+	font-size: 14px;
+	/*font-weight: bold;*/
+}
+
+.login .username::before {
+	content: '';
+	position: absolute;
+	width: 8px;
+	height: 3px;
+	left: 100%;
+	top: 50%;
+	border-radius: 2px;
+	background-color: #b1b1b1;
+	vertical-align: middle;
+	transform: rotate(-45deg) translate(-3px, -3px);
+	transition: 0.1s 0.2s;
+}
+
+.login .username::after {
+	content: '';
+	display: inline-block;
+	width: 8px;
+	height: 3px;
+	left: 100%;
+	top: 50%;
+	margin-left: 5px;
+	border-radius: 2px;
+	background-color: #b1b1b1;
+	vertical-align: middle;
+	transform: rotate(45deg);
+	transition: 0.1s 0.2s;
+}
+
+.login .dropdown:hover .username::before {
+	transform: rotate(45deg) translate(-3px, 3px);
+}
+.login .dropdown:hover .username::after {
+	transform: rotate(-45deg);
+}
+
+.login .login-content {
+	padding: 6px 15px 8px;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	border-radius: 3px;
+	box-shadow: 0 0 5px #b1b1b1;
+	background-color: white;
+	text-align: left;
+	overflow: hidden;
+	transition: 0.1s 0.2s;
+	transform: scaleY(0);
+	transform-origin: top;
+}
+
+.login-content a {
+	display: block;
+	position: relative;
+	padding-bottom: 5px;
+	color: #333;
+	text-decoration: none;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.login-content a::before {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	border-radius: 1px;
+	background-color: #b1b1b1;
+	transform: scaleX(0);
+	transition: 0.2s ease-in-out;
+}
+
+.login-content a:hover::before {
+	transform: scaleX(1);
+}
+
+.login .dropdown:hover .login-content {
+	transform: scaleY(1);
+}
+
+/* Unlogin
+------------- */
+
+.unlogin .dropdown:hover .login-content {
+	transform: scaleY(0);
+}
+
+.unlogin .username::before, .unlogin .username::after {
+	width: 0;
+	height: 0;
+}
+
+.unlogin .username {
+	cursor: pointer;
+}

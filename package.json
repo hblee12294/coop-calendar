@@ -1,0 +1,69 @@
+{
+  "name": "calendar",
+  "version": "1.0.0",
+  "description": "CoopCalendar is an agenda-management and team-collaboration web calendar",
+  "main": "server.js",
+  "engines": {
+    "node": "8.9.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "client": "npm run react-start",
+    "server": "node server.js",
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test --env=jsdom",
+    "react-eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seainfo6250/project-malachite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seainfo6250/project-malachite/issues"
+  },
+  "homepage": "https://github.com/seainfo6250/project-malachite#readme",
+  "dependencies": {
+    "async": "^2.6.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.1",
+    "connect-redis": "^3.3.3",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "crypto": "^1.0.1",
+    "deasync": "^0.1.12",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.0.14",
+    "passport": "^0.4.0",
+    "passport-google": "^0.3.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.0",
+    "react-cookies": "^0.1.0",
+    "session-file-store": "^1.2.0",
+    "xss-filters": "^1.2.7",
+    "react": "^16.2.0",
+    "react-day-picker": "^7.1.4",
+    "react-dom": "^16.2.0",
+    "react-md-spinner": "^0.2.5",
+    "react-scripts": "1.1.1",
+    "react-tabs": "^2.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1"
+  },
+  "cacheDirectories": [
+    "node_modules"
+  ],
+  "keywords": [
+    "node",
+    "heroku",
+    "create-react-app",
+    "react",
+    "calendar"
+  ]
+}

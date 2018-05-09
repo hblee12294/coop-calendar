@@ -1,0 +1,102 @@
+/* Style for DayCell
+------------------------ */
+
+.day-cell {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+	align-content: flex-start;
+	flex: 1 1 0%;
+	position: relative;
+	padding: 2px 5px;
+	border-radius: 5px;
+	overflow: hidden;
+	transition: .3s;
+}
+
+.day-cell:hover {
+	box-shadow: 0 0 10px #b1b1b1;
+}
+
+.cell-disabled:hover {
+	box-shadow: none;
+}
+
+.cell-today .day-num::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	height: 18px;
+	width: 20px;
+	border-radius: 5px;
+	background-color: #1E824C;
+	z-index: -1;
+}
+
+.cell-today .day-num {
+	color: white;
+	font-weight: bold;
+}
+
+.day-num {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 100%;
+	cursor: pointer;
+}
+
+.day-num::after {
+	content: ' + ';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	background-color: white;
+	color: #797979;
+	text-align: center;
+	line-height: 100%;
+	font-size: 20px;
+	font-weight: bold;
+	opacity: 0;
+	transition: .1s;
+}
+
+.day-num:hover::after {
+	opacity: 1;
+}
+
+.event-bar {
+	display: flex;
+	flex: none;
+	width: 95%;
+	padding: 1px 7px;
+	margin: 1px 0;
+	border-radius: 5px;
+	color: white;
+	font-size: 12px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	cursor: pointer;
+}
+
+.event-private {
+	background-color: #2574A9;
+}
+
+.event-public {
+	background-color: #E87E04;
+}
+
+.event-past {
+	background-color: #d1d1d1;
+}
