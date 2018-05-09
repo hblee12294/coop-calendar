@@ -120,6 +120,6 @@ CoopCalendar is an agenda-management and team-collaboration web calendar based o
 
 ### Deployment:
 * Platform: Heroku
-* Link: <https://coop-calendar.herokuapp.com>
+* Link:  
 
 

@@ -6,7 +6,7 @@ const express   = require('express'),
     mongoose = require('mongoose'),
     cookieParser = require('cookie-parser'),
     env = require('./config/env.json'),
-    PORT     = env.SERVER_PORT,
+    PORT     = process.env.PORT || env.SERVER_PORT,
     passport = require('./config/passport-setup'),
     crypto = require('crypto'),
     session = require('express-session'),
@@ -15,7 +15,7 @@ const express   = require('express'),
     MongoStore = require('connect-mongo')(session),
     xssFilters = require('xss-filters');
 
-app.use(express.static(path.resolve(__dirname, './build')));
+app.use(express.static(path.resolve(__dirname, './client/build')));
 app.use(bodyParser.json({ extended: true, type: '*/*' }) );
 app.use(cookieParser());
 
@@ -56,7 +56,7 @@ app.use(session({
 
 // --- CORS set ---
 app.use((req,res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.header('Access-Control-Allow-Origin', 'https://coop-calendar.herokuapp.com');
     res.header('Access-Control-Allow-Methods', 'OPTION,GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,Accept');
     res.setHeader('Access-Control-Allow-Credentials',true);
@@ -78,8 +78,8 @@ function cryptPwd(password) {
 
 
 // --- Listener ---
-app.listen( process.env.PORT || PORT, () => {
-    console.log(`Server listening at http://${ env.SERVER_HOST }:${ process.env.PORT || PORT }`);
+app.listen( PORT, () => {
+    console.log(`Server listening at http://${ env.SERVER_HOST }:${ PORT }`);
 });
 
 // --- Login ---
@@ -206,7 +206,7 @@ app.get('/auth/google/redirect',
                         username: req.user.username,
                         id: req.user._id,
         }));
-        res.redirect('http://localhost:3000');//redirect website
+        res.redirect('https://coop-calendar.herokuapp.com');//redirect website
     }
 );
 
@@ -293,43 +293,33 @@ app.post('/user/event',isLoggedIn,function (req,res) {
 
 
 /* a logged user edit event*/
-app.put('/user/event/:id',isLoggedIn,function (req,res) {
+app.put('/user/event/:id', isLoggedIn, function (req,res) {
     const event = xssFilters.inHTMLData(req.body.event);
     const title = xssFilters.inHTMLData(req.body.event.title);
     console.log(event);
-    if(event === null || title === null || event.endDate < event.startDate){
+
+    if( event === null || title === null || event.endDate < event.startDate ) {
         res.status(400).send({isUpdated :false,'msg':'update-event-is-not-valid'});
-    }else{
-        Event.findById(req.params.id,function (err,event) {
-           if (err){
-               console.log(err);
-               res.status(400).send({isUpdated :false,'msg':'find-event-failed'});
-           }else{
-               Event.findByIdAndUpdate(req.params.id, req.body.event, function (err, event) {
-                   if (err){
-                       console.log(err);
-                       res.status(400).send({isUpdated :false,'msg':'update-event-failed'});
-                   }else{
-                       //event creator remains the same
-                       event.creator.id = req.session.loginUser.id;
-                       event.creator.username = req.session.loginUser.username;
-                       console.log(req.sessionID);
-                       //save event to db
-                       event.save();
-                       console.log('Update event successfully!');
-                       res.status(200).send({
-                           isUpdated :true
-                       });
-                   }
-               });
-               console.log("error,user don't have permission to do that!");
+    } else {
+    	Event.findByIdAndUpdate( req.params.id, req.body.event, function(err, event) {
+    		if(err) {
+    			console.log(err);
+    			res.status(400).send({ isUpdated: false, 'msg':'update-event-failed' });
+    		}
+    		else {
+				//event creator remains the same
+               event.creator.id = req.session.loginUser.id;
+               event.creator.username = req.session.loginUser.username;
+               console.log(req.sessionID);
+               //save event to db
+               event.save();
+               console.log('Update event successfully!');
                res.status(200).send({
-                   isUpdated :false
-               });
-           }
-        });
-    }
-    
+                   isUpdated :true
+               });	
+    		}
+    	});
+  	 }
 });
 
 

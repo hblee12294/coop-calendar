@@ -64,7 +64,7 @@ class PopupEdit extends Component {
 				editLoading: true,
 			});
 
-			editEvent(`user/event/${ event._id }`, event)
+			editEvent(`/user/event/${ event._id }`, event)
 			.then( result => {
 				if ( result.isUpdated ) {
 					updateEvents();
@@ -81,7 +81,7 @@ class PopupEdit extends Component {
 	handleDeleteEvent() {
 		const { event, closePopup, updateEvents } = this.props;
 
-		deleteEvent(`user/event/${ event._id }`, event)
+		deleteEvent(`/user/event/${ event._id }`, event)
 		.then( result => {
 			if ( result.isDeleted ) {
 				updateEvents();

@@ -53,7 +53,7 @@ class App extends Component {
 
 	logout() {
 		cookie.remove('user');
-		userLogout('logout')
+		userLogout('/logout')
 		.then( result => {
 			if (!result.isLogin) {
 				this.setState({
@@ -78,7 +78,7 @@ class App extends Component {
 		if ( currentUser.id ) {
 			this.toggleLoading();
 
-			getUserEvents(`user/${ currentUser.id }/${ currentDate.getFullYear() }/${ currentDate.getMonth() }`)
+			getUserEvents(`/user/${ currentUser.id }/${ currentDate.getFullYear() }/${ currentDate.getMonth() }`)
 			.then(result => {
 				events = result.sendEvents.map( event => {
 					event.startDate = new Date( event.startDate );

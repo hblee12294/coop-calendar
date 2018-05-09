@@ -60,7 +60,7 @@ class PopupAdd extends Component {
 				loading: true,
 			});
 
-			createEvent('user/event', event)
+			createEvent('/user/event', event)
 			.then( result => {
 				if ( result.isCreated ) {
 					updateEvents();

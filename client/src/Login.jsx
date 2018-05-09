@@ -97,7 +97,7 @@ class Login extends Component {
 				loginLoading: true,
 			});
 
-			userLogin('login', loginInfo)
+			userLogin('/login', loginInfo)
 			.then( result => {             
 				if ( result.isLogin ) {
 					login({ 
@@ -153,7 +153,7 @@ class Login extends Component {
 				signupLoading: true,
 			});
 
-			userSignup('register', signupInfo)
+			userSignup('/register', signupInfo)
 			.then( result => {
 				if ( result.isRegister ) {
 					this.setState({
@@ -232,7 +232,7 @@ class Login extends Component {
 								</div>
 								<div className="field btn-group">
 									<button onClick={ this.handleLogin } >{ loginLoading ? <MDSpinner size={ 15 } singleColor="#ffffff" /> : 'Log In' }</button>
-									<a className="btn-google" href="http://localhost:5000/auth/google"><img src={ google } alt="google" />Google</a>
+									<a className="btn-google" href="http://coop-calendar.herokuapp.com/auth/google"><img src={ google } alt="google" />Google</a>
 								</div>
 							</div>
 						</TabPanel>

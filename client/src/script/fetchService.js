@@ -1,10 +1,6 @@
-
-const baseUrl = 'http://localhost:5000/';
 // Login and Signup services
 
-export const userLogin = async (path, userInfo) => {
-    const url = baseUrl + path;
-
+export const userLogin = async (url, userInfo) => {
     try {
         const res = await fetch(url, {
             method: 'POST',
@@ -19,9 +15,7 @@ export const userLogin = async (path, userInfo) => {
     }
 }
 
-export const userSignup = async (path, userInfo) => {
-    const url = baseUrl + path;
-
+export const userSignup = async (url, userInfo) => {
     try {
         const res = await fetch(url, {
             method: 'POST',
@@ -36,9 +30,7 @@ export const userSignup = async (path, userInfo) => {
     }
 }
 
-export const userLogout = async (path) => {
-    const url = baseUrl + path;
-
+export const userLogout = async (url) => {
     try {
         const res = await fetch(url, {
             method: 'GET',
@@ -55,13 +47,10 @@ export const userLogout = async (path) => {
 
 // Data fetch services
 
-export const getUserEvents = async (path) => {
-    const url = baseUrl + path;
-
+export const getUserEvents = async (url) => {
     try {
         const res = await fetch(url, {
             method : 'GET',
-            Origin: 'http://localhost:5000',
             headers: { 'Accept': 'application/json' },
             mode: 'cors',
             credentials:'include',
@@ -74,13 +63,10 @@ export const getUserEvents = async (path) => {
     }
 };
 
-export const createEvent = async (path, event) => {
-    const url = baseUrl + path;
-
+export const createEvent = async (url, event) => {
     try {
         const res = await fetch(url, {
             method: 'POST',
-            Origin: 'http://localhost:5000',
             headers: { 'Accept': 'application/json' },
             body: JSON.stringify({
                 event,
@@ -95,13 +81,10 @@ export const createEvent = async (path, event) => {
     }
 };
 
-export const editEvent = async (path, event) => {
-    const url = baseUrl + path;
-
+export const editEvent = async (url, event) => {
     try {
         let res = await fetch(url, {
             method: 'PUT',
-            Origin: 'http://localhost:5000',
             headers:{'Accept': 'application/json'},
             body: JSON.stringify({
                 event,
@@ -116,13 +99,10 @@ export const editEvent = async (path, event) => {
     }
 };
 
-export const deleteEvent = async (path, event) => {
-    const url = baseUrl + path;
-    
+export const deleteEvent = async (url, event) => {
     try {
         let res = await fetch(url, {
             method: 'DELETE',
-            Origin: 'http://localhost:5000',
             headers:{'Accept': 'application/json'},
             body: JSON.stringify({
                 event,
